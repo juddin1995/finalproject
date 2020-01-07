@@ -4,14 +4,10 @@ source "https://rubygems.org" do
   gem "sinatra-activerecord"
   gem "sinatra-flash"
   gem "sinatra-redirect-with-flash"
+  gem "pg"
 end
 
 group :development do
-  gem "sqlite3"
   gem "tux"
-end
-
-group :production do
-  gem "pg"
 end
 

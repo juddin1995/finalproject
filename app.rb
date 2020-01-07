@@ -6,7 +6,7 @@ require './models'
 
 set :port, 6060
 
-set :database, {adapter: 'postgresql', database: 'blogusers'}
+set :database, {adapter: 'postgresql', database: 'finalproject'}
 
 enable :sessions
 
