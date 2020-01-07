@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'pg'
@@ -5,7 +6,7 @@ require './models'
 
 set :port, 6060
 
-set :database, {adapter: 'postgresql', database: 'finalproject',username: 'postgres', password: ENV['POSTGRES_PW']}
+set :database, {adapter: 'postgresql', database: 'finalproject', username: 'postgres', password: ENV['POSTGRES_PW']}
 
 enable :sessions
 
