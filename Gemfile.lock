@@ -46,7 +46,6 @@ GEM
       sinatra (>= 1.0.0)
     sinatra-redirect-with-flash (0.2.1)
       sinatra (>= 1.0.0)
-    sqlite3 (1.4.2)
     thread_safe (0.3.6)
     tilt (2.0.10)
     tux (0.3.0)
@@ -63,12 +62,11 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord!
-  pg
+  pg!
   sinatra!
   sinatra-activerecord!
   sinatra-flash!
   sinatra-redirect-with-flash!
-  sqlite3
   tux
 
 BUNDLED WITH
