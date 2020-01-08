@@ -3,17 +3,12 @@ body{
     margin: 0;
 }
 
-#nav-right{
-    float: right;
+#nav{
     align-items: center;
 }
 
 #containerHome{
-    background-color: red;
-    display: grid;
-    grid-template: repeat(2,50vh)/80vw 20vw;
     margin-top: 5px;
-    grid-template-areas: 'post fri' 'post rec';
 }
 
 #posts{
