@@ -1,6 +1,7 @@
 require 'dotenv/load'
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'sinatra/flash'
 require 'pg'
 require './models'
 
@@ -33,9 +34,9 @@ end
 post '/login' do
     user = User.find_by(email: params[:email])
     given_password = params[:password]
+    puts user
     if user.password == given_password
         session[:user_id] = user.id
-        session[:user_name] = user.name
         redirect '/profile'
     else
         flash[:error] = "Correct email but wrong password. did you mean #{user.password} 
@@ -53,7 +54,7 @@ post '/signup' do
     if @user.valid?
         puts @user
         @user.save
-        redirect '/'
+        redirect '/login'
     else
         flash[:errors] = @user.errors.full_messages
         redirect '/signup'
