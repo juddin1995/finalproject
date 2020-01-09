@@ -11,20 +11,43 @@ set :database, {adapter: 'postgresql', database: 'finalproject', username: 'post
 
 enable :sessions
 
+class Article < ActiveRecord::Base
+
+end
+
 get '/' do
     erb :home
 end
 
-post '/' do
-    @post = Post.new(params[:content])
-    if @post.valid?
-        pp @post
-        @post.save
+get '/posts/new' do
+    if session['user_id'] == nil
+        p 'User was not logged in'
         redirect '/'
-    else
-        flash[:errors] = @post.errors.full_messages
-        redirect '/signup'
     end
+    erb :'/posts/new'
+end
+
+post '/posts/new' do # CREATE
+    p "post published!"
+    @post = Post.new(title: params['title'], content: params['content'], user_id: session['user_id'])
+    @post.save
+    redirect "/posts/#{@post.id}"
+end
+
+get '/posts/:id' do # READ
+    @post = Post.find(params['id'])
+    erb :'/posts/show'
+end
+
+get '/posts/?' do
+    @posts = Post.all
+    erb :'/posts/index'
+end
+
+delete '/posts/:id' do # DELETE
+    @post = Post.find(params['article_id'])
+    @post.destroy
+    redirect "/"
 end
 
 get '/login' do
@@ -68,6 +91,11 @@ get '/profile' do
 end
 
 get '/logout' do
+    session[:user_id] = nil
+    redirect '/'
+end
+
+post '/logout' do
     session[:user_id] = nil
     redirect '/'
 end

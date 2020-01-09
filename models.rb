@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
 end
 
 class Post < ActiveRecord::Base
-    validates :body, length: {maximum: 255}
+    validates :content, length: {maximum: 255}
     belongs_to :user
 end

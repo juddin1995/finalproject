@@ -1,0 +1,10 @@
+<h1>Create <span id="post-title">a New Post</span></h1>
+
+<form action="/posts/new" method="POST">
+  <input type="text" name="title" id='form-title' onchange='updateText()'><br>
+  <textarea name="content" rows='10'></textarea>
+
+  <p>
+      <input type="submit" value="post">
+  </p>
+</form>
